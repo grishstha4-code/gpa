@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratikshya lai pathau ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .page.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #ff6b9d, #ff1493);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 24px;
+            border-radius: 35px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255,107,157,0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            min-width: 200px;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255,107,157,0.7);
+        }
+
+        .heart-container {
+            margin: 30px 0;
+        }
+
+        .big-heart {
+            font-size: 150px;
+            animation: heartbeat 1.2s infinite;
+            margin-bottom: 20px;
+        }
+
+        .love-text {
+            font-size: 38px;
+            color: #333;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 22px 45px;
+            font-size: 28px;
+            border-radius: 35px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(76,175,80,0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 180px;
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+            border: none;
+            padding: 22px 45px;
+            font-size: 28px;
+            border-radius: 35px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(244,67,54,0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 180px;
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(76,175,80,0.7);
+        }
+
+        .no-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(244,67,54,0.7);
+        }
+
+        .congrats-container {
+            text-align: center;
+        }
+
+        .congrats-title {
+            font-size: 36px;
+            color: #4CAF50;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+
+        .hearts {
+            font-size: 65px;
+            margin: 25px 0;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (max-width: 480px) {
+            .title { font-size: 24px; margin-bottom: 30px; }
+            .big-heart { font-size: 120px; }
+            .love-text { font-size: 30px; }
+            .next-btn { font-size: 20px; padding: 18px 35px; min-width: 160px; }
+            .yes-btn, .no-btn { font-size: 24px; padding: 18px 35px; min-width: 150px; }
+            .btn-container { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 - BIG NEXT BUTTON -->
+    <div id="page1" class="page active">
+        <div class="title">Pratikshya lai share garna ❤️</div>
+        <button class="next-btn" onclick="nextPage()">NEXT &gt;&gt;</button>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+        <div class="heart-container">
+            <div class="big-heart">💖</div>
+            <div class="love-text">MA TIMILAI MAYA GARCHU</div>
+        </div>
+        <div class="btn-container">
+            <button class="yes-btn" onclick="showCongrats()">HO 😍</button>
+            <button class="no-btn" onclick="doNothing()">HOINA 😔</button>
+        </div>
+    </div>
+
+    <!-- Page 3 - Congratulations -->
+    <div id="page3" class="page">
+        <div class="congrats-container">
+            <div class="hearts">💖💕💖💕💖</div>
+            <div class="congrats-title">🎉 BADHAI CHA! 🎉</div>
+            <div style="font-size: 26px; color: #333; margin-top: 20px; font-weight: bold;">
+                Teshle HO bhanyo! 💕💕💕
+            </div>
+            <div class="hearts" style="margin-top: 35px;">❤️❤️❤️</div>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            document.getElementById('page1').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('page2').classList.add('active');
+            }, 300);
+        }
+
+        function showCongrats() {
+            document.getElementById('page2').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('page3').classList.add('active');
+            }, 300);
+        }
+
+        function doNothing() {
+            // Nothing happens - stays on same page
+        }
+    </script>
+</body>
+</html>
